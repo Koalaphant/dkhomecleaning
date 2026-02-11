@@ -1,5 +1,6 @@
 import { LiaBroomSolid } from "react-icons/lia";
 import { FaCheckCircle } from "react-icons/fa";
+import { IoMdCheckmarkCircleOutline } from "react-icons/io";
 
 import Hero from "../Components/Hero";
 
@@ -39,9 +40,9 @@ export default function Home() {
 
             <ul className="flex flex-col">
               <li>
-                <FaCheckCircle />
+                <IoMdCheckmarkCircleOutline size={35} color="#105361" />
                 <p>
-                  We are based in the heart of Warrington but we also serve the
+                  We are bassed in the heart of Warrington but we also serve the
                   surrounding areas. Give us a call or request a callback to
                   discuss your service requirements and location.
                 </p>
