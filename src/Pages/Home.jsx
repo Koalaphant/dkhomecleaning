@@ -5,6 +5,7 @@ import { FaHandshake } from "react-icons/fa6";
 import { MdFamilyRestroom } from "react-icons/md";
 import { PiMedalFill } from "react-icons/pi";
 import { GiKitchenScale } from "react-icons/gi";
+import Reviews from "../Components/Reviews";
 
 import Hero from "../Components/Hero";
 
@@ -257,6 +258,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <Reviews />
     </>
   );
 }
