@@ -1,6 +1,9 @@
 import { LiaBroomSolid } from "react-icons/lia";
 import { IoMdCheckmark } from "react-icons/io";
 import { FaBath, FaHome } from "react-icons/fa";
+import { FaHandshake } from "react-icons/fa6";
+import { MdFamilyRestroom } from "react-icons/md";
+import { PiMedalFill } from "react-icons/pi";
 import { GiKitchenScale } from "react-icons/gi";
 
 import Hero from "../Components/Hero";
@@ -188,6 +191,67 @@ export default function Home() {
                     More details
                   </a>
                 </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="mt-10 mx-4 md:mx-8">
+        <div className="mx-auto max-w-4xl rounded-3xl bg-[#f2f7f8] px-6 py-10 md:px-10 md:py-12">
+          <div className="space-y-8">
+            <div className="space-y-2">
+              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#105361]">
+                Our promise
+              </p>
+              <h3 className="font-merriweather text-2xl text-[#105361] md:text-3xl">
+                What You Can Expect
+              </h3>
+            </div>
+
+            <div className="grid gap-6 md:grid-cols-3">
+              <div className="rounded-2xl bg-white p-6 shadow-sm">
+                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#105361]/10">
+                  <MdFamilyRestroom className="text-2xl text-[#105361]" />
+                </div>
+                <h4 className="mt-4 font-merriweather text-lg text-[#105361]">
+                  Family-run Business
+                </h4>
+                <p className="mt-3 font-roboto text-base leading-relaxed text-slate-700">
+                  As a family-run business, we offer a more personalised
+                  experience and build closer relationships with our clients.
+                  Our commitment to providing quality service means we take
+                  pride in going the extra mile to ensure our clients&apos;
+                  satisfaction.
+                </p>
+              </div>
+
+              <div className="rounded-2xl bg-white p-6 shadow-sm">
+                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#105361]/10">
+                  <FaHandshake className="text-2xl text-[#105361]" />
+                </div>
+                <h4 className="mt-4 font-merriweather text-lg text-[#105361]">
+                  We Are Commited
+                </h4>
+                <p className="mt-3 font-roboto text-base leading-relaxed text-slate-700">
+                  We are commited to bringing a high quality service to our
+                  customers. Ensuring they will feel confident in using DK Home
+                  Cleaning to maintain a clean and tidy home.
+                </p>
+              </div>
+
+              <div className="rounded-2xl bg-white p-6 shadow-sm">
+                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#105361]/10">
+                  <PiMedalFill className="text-2xl text-[#105361]" />
+                </div>
+                <h4 className="mt-4 font-merriweather text-lg text-[#105361]">
+                  Customer Focused Reviews
+                </h4>
+                <p className="mt-3 font-roboto text-base leading-relaxed text-slate-700">
+                  The reviews from our customers speak for themselves. Take a
+                  look on our social media platforms to see what our customers
+                  say about us.
+                </p>
               </div>
             </div>
           </div>
