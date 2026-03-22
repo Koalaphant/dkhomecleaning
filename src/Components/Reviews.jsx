@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useLayoutEffect, useMemo, useRef, useState } from "react";
 import { FaStar } from "react-icons/fa";
 import { IoChevronDown } from "react-icons/io5";
 import reviews from "../data/reviews";
@@ -11,6 +11,14 @@ export default function Reviews() {
     [expanded]
   );
   const hasMore = reviews.length > visibleCount;
+  const gridRef = useRef(null);
+  const [gridHeight, setGridHeight] = useState(0);
+
+  useLayoutEffect(() => {
+    if (gridRef.current) {
+      setGridHeight(gridRef.current.scrollHeight);
+    }
+  }, [expanded, visibleReviews.length]);
 
   return (
     <section className="mt-10 mx-4 md:mx-8">
@@ -23,17 +31,33 @@ export default function Reviews() {
             <h3 className="font-merriweather text-2xl text-[#105361] md:text-3xl">
               What Our Clients Say
             </h3>
-            <p className="font-roboto text-sm text-slate-600 md:text-base">
+            <p className="font-lato text-sm text-slate-600 md:text-base">
               Real feedback from customers across Warrington.
             </p>
           </div>
 
           <div className="relative">
-            <div className="grid gap-6 md:grid-cols-3">
-              {visibleReviews.map((item) => (
+            <div
+              className="overflow-hidden transition-[height] duration-500 ease-out"
+              style={{ height: gridHeight }}
+            >
+              <div
+                ref={gridRef}
+                className="columns-1 gap-6 md:columns-3"
+              >
+              {visibleReviews.map((item, index) => (
                 <div
                   key={item.id}
-                  className="flex h-full flex-col rounded-2xl border border-[#d4e6ea] bg-[#f4fafb] p-6"
+                  className={`mb-6 inline-flex w-full break-inside-avoid flex-col rounded-2xl border border-[#d4e6ea] bg-[#f4fafb] p-6 ${
+                    expanded && index >= visibleCount
+                      ? "review-reveal opacity-0"
+                      : ""
+                  }`}
+                  style={
+                    expanded && index >= visibleCount
+                      ? { animationDelay: `${(index - visibleCount) * 80}ms` }
+                      : undefined
+                  }
                 >
                   <div className="flex items-center gap-1 text-[#105361]">
                     {Array.from({ length: 5 }).map((_, index) => (
@@ -47,7 +71,7 @@ export default function Reviews() {
                       />
                     ))}
                   </div>
-                  <p className="mt-4 flex-1 font-roboto text-base leading-relaxed text-slate-700">
+                  <p className="mt-4 flex-1 font-lato text-base leading-relaxed text-slate-700">
                     “{item.review}”
                   </p>
                   <p className="mt-6 font-merriweather text-sm font-semibold uppercase tracking-[0.2em] text-[#105361]">
@@ -55,6 +79,7 @@ export default function Reviews() {
                   </p>
                 </div>
               ))}
+              </div>
             </div>
             {hasMore && !expanded && (
               <div className="pointer-events-none absolute inset-x-0 -bottom-2 h-24 bg-gradient-to-b from-white/0 via-white/70 to-white"></div>

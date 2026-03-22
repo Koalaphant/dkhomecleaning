@@ -35,7 +35,7 @@ export default function Home() {
       <section className="mt-8 mx-4 md:mx-8">
         <div className="mx-auto max-w-4xl rounded-2xl border border-slate-100 bg-white px-6 py-8 shadow-md md:px-10 md:py-10">
           <div className="space-y-6">
-            <p className="font-roboto text-base leading-relaxed text-slate-700 md:text-lg">
+            <p className="font-lato text-base leading-relaxed text-slate-700 md:text-lg">
               Our mission is not only to meet your expectations, but to exceed
               them.
             </p>
@@ -45,7 +45,7 @@ export default function Home() {
                 <span className="mt-1 flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-[#105361]/10">
                   <IoMdCheckmark className="text-xl text-[#105361]" />
                 </span>
-                <p className="font-roboto text-base leading-relaxed text-slate-700 md:text-lg">
+                <p className="font-lato text-base leading-relaxed text-slate-700 md:text-lg">
                   We are based in the heart of Warrington but we also serve the
                   surrounding areas. Give us a call or request a callback to
                   discuss your service requirements and location.
@@ -55,7 +55,7 @@ export default function Home() {
                 <span className="mt-1 flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-[#105361]/10">
                   <IoMdCheckmark className="text-xl text-[#105361]" />
                 </span>
-                <p className="font-roboto text-base leading-relaxed text-slate-700 md:text-lg">
+                <p className="font-lato text-base leading-relaxed text-slate-700 md:text-lg">
                   We offer a vast variety of different domestic cleans from a
                   basic clean to a full house sweep. We also provide services to
                   small offices and businesses.
@@ -65,10 +65,10 @@ export default function Home() {
                 <span className="mt-1 flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-[#105361]/10">
                   <IoMdCheckmark className="text-xl text-[#105361]" />
                 </span>
-                <p className="font-roboto text-base leading-relaxed text-slate-700 md:text-lg">
-                  Fully insured and CRB/DBS checked to ensure your safety in your
-                  own home, whilst having an ease of mind knowing we are here to
-                  help.
+                <p className="font-lato text-base leading-relaxed text-slate-700 md:text-lg">
+                  Fully insured and CRB/DBS checked to ensure your safety in
+                  your own home, whilst having an ease of mind knowing we are
+                  here to help.
                 </p>
               </li>
             </ul>
@@ -76,7 +76,7 @@ export default function Home() {
             <div className="flex justify-center">
               <a
                 className="inline-flex items-center justify-center rounded-full bg-[#105361] px-8 py-3 text-sm font-semibold uppercase tracking-wide text-white shadow-sm transition-transform duration-300 hover:scale-105"
-                href=""
+                href="/about"
               >
                 Look at our services
               </a>
@@ -95,7 +95,7 @@ export default function Home() {
               <h3 className="font-merriweather text-2xl text-[#105361] md:text-3xl">
                 Our Cleaning Services
               </h3>
-              <p className="font-roboto text-sm text-slate-600 md:text-base">
+              <p className="font-lato text-sm text-slate-600 md:text-base">
                 Tailored options for every room and every home.
               </p>
             </div>
@@ -106,7 +106,7 @@ export default function Home() {
                   <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-[#105361]/10">
                     <GiKitchenScale className="text-2xl text-[#105361]" />
                   </span>
-                  <p className="font-roboto text-base font-semibold text-[#105361]">
+                  <p className="font-lato text-base font-semibold text-[#105361]">
                     Kitchen Cleaning
                   </p>
                 </div>
@@ -117,7 +117,7 @@ export default function Home() {
                   <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-[#105361]/10">
                     <FaBath className="text-2xl text-[#105361]" />
                   </span>
-                  <p className="font-roboto text-base font-semibold text-[#105361]">
+                  <p className="font-lato text-base font-semibold text-[#105361]">
                     Bathroom Cleaning
                   </p>
                 </div>
@@ -128,7 +128,7 @@ export default function Home() {
                   <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-[#105361]/10">
                     <FaHome className="text-2xl text-[#105361]" />
                   </span>
-                  <p className="font-roboto text-base font-semibold text-[#105361]">
+                  <p className="font-lato text-base font-semibold text-[#105361]">
                     House Cleaning
                   </p>
                 </div>
@@ -149,14 +149,14 @@ export default function Home() {
               <h3 className="font-merriweather text-2xl text-[#105361] md:text-3xl">
                 Why you choose our services
               </h3>
-              <p className="font-roboto text-sm text-slate-600 md:text-base">
+              <p className="font-lato text-sm text-slate-600 md:text-base">
                 Trusted, local, and built around your peace of mind.
               </p>
             </div>
 
             <div className="grid gap-6 md:grid-cols-[1.2fr_0.8fr] md:items-start">
               <div className="rounded-2xl border border-[#d4e6ea] bg-[#f4fafb] p-6">
-                <p className="font-roboto text-base leading-relaxed text-slate-700 md:text-lg">
+                <p className="font-lato text-base leading-relaxed text-slate-700 md:text-lg">
                   As a family-run business, we set the standard of home
                   cleaning. Our homes are precious, which is why DK Home
                   Cleaning are CRB/DBS checked to ensure safety and ease of mind
@@ -187,7 +187,7 @@ export default function Home() {
                 <div className="mt-5">
                   <a
                     className="inline-flex items-center justify-center rounded-full bg-white px-6 py-2 text-xs font-semibold uppercase tracking-wide text-[#105361] transition-transform duration-300 hover:scale-105"
-                    href=""
+                    href="/about"
                   >
                     More details
                   </a>
@@ -218,7 +218,7 @@ export default function Home() {
                 <h4 className="mt-4 font-merriweather text-lg text-[#105361]">
                   Family-run Business
                 </h4>
-                <p className="mt-3 font-roboto text-base leading-relaxed text-slate-700">
+                <p className="mt-3 font-lato text-base leading-relaxed text-slate-700">
                   As a family-run business, we offer a more personalised
                   experience and build closer relationships with our clients.
                   Our commitment to providing quality service means we take
@@ -234,7 +234,7 @@ export default function Home() {
                 <h4 className="mt-4 font-merriweather text-lg text-[#105361]">
                   We Are Commited
                 </h4>
-                <p className="mt-3 font-roboto text-base leading-relaxed text-slate-700">
+                <p className="mt-3 font-lato text-base leading-relaxed text-slate-700">
                   We are commited to bringing a high quality service to our
                   customers. Ensuring they will feel confident in using DK Home
                   Cleaning to maintain a clean and tidy home.
@@ -248,7 +248,7 @@ export default function Home() {
                 <h4 className="mt-4 font-merriweather text-lg text-[#105361]">
                   Customer Focused Reviews
                 </h4>
-                <p className="mt-3 font-roboto text-base leading-relaxed text-slate-700">
+                <p className="mt-3 font-lato text-base leading-relaxed text-slate-700">
                   The reviews from our customers speak for themselves. Take a
                   look on our social media platforms to see what our customers
                   say about us.

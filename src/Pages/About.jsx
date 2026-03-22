@@ -11,7 +11,7 @@ export default function About() {
             <h1 className="mt-4 font-merriweather text-3xl sm:text-4xl md:text-5xl">
               We Are The Best Cleaning Services Provider
             </h1>
-            <p className="mt-4 max-w-2xl font-roboto text-base leading-relaxed text-white/85 sm:text-lg">
+            <p className="mt-4 max-w-2xl font-lato text-base leading-relaxed text-white/85 sm:text-lg">
               Our mission is not only to meet your expectations but to exceed
               them.
             </p>
@@ -29,7 +29,7 @@ export default function About() {
               <h2 className="mt-3 font-merriweather text-2xl text-[#105361]">
                 Based in Warrington
               </h2>
-              <p className="mt-4 font-roboto text-base leading-relaxed text-slate-700">
+              <p className="mt-4 font-lato text-base leading-relaxed text-slate-700">
                 We are based in the heart of Warrington but we also serve the
                 surrounding areas. Give us a call or request a callback to
                 discuss your service requirements and location.
@@ -63,7 +63,7 @@ export default function About() {
               <h2 className="mt-3 font-merriweather text-2xl text-[#105361]">
                 Domestic and Small Office Cleans
               </h2>
-              <p className="mt-4 font-roboto text-base leading-relaxed text-slate-700">
+              <p className="mt-4 font-lato text-base leading-relaxed text-slate-700">
                 We offer a vast variety of different domestic cleans from a
                 basic clean to a full house sweep. We also provide services to
                 small offices and businesses.
@@ -83,7 +83,7 @@ export default function About() {
               <h2 className="mt-3 font-merriweather text-2xl text-[#105361]">
                 Fully Insured and DBS Checked
               </h2>
-              <p className="mt-4 font-roboto text-base leading-relaxed text-slate-700">
+              <p className="mt-4 font-lato text-base leading-relaxed text-slate-700">
                 Fully insured and CRB/DBS checked to ensure your safety in your
                 own home, whilst having an ease of mind knowing we are here to
                 help.

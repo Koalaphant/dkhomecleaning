@@ -1,4 +1,4 @@
-import { FaFacebookF, FaInstagram, FaXTwitter } from "react-icons/fa6";
+import { FaFacebookF } from "react-icons/fa6";
 
 export default function Footer() {
   return (
@@ -7,7 +7,7 @@ export default function Footer() {
         <div className="grid gap-10 md:grid-cols-[1.3fr_1fr_1fr_1fr]">
           <div className="space-y-4">
             <h3 className="font-merriweather text-2xl">DK Home Cleaning</h3>
-            <p className="font-roboto text-base leading-relaxed text-white/80">
+            <p className="font-lato text-base leading-relaxed text-white/80">
               A family-run cleaning business based in Warrington since 2013.
             </p>
             <div>
@@ -21,20 +21,6 @@ export default function Footer() {
                   aria-label="Facebook"
                 >
                   <FaFacebookF />
-                </a>
-                <a
-                  href="#"
-                  className="flex h-9 w-9 items-center justify-center rounded-full border border-white/30 transition hover:bg-white/10"
-                  aria-label="Instagram"
-                >
-                  <FaInstagram />
-                </a>
-                <a
-                  href="#"
-                  className="flex h-9 w-9 items-center justify-center rounded-full border border-white/30 transition hover:bg-white/10"
-                  aria-label="X"
-                >
-                  <FaXTwitter />
                 </a>
               </div>
             </div>

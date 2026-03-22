@@ -19,18 +19,16 @@ export default function Hero() {
                 Welcome to DK Home Cleaning
               </p>
               <h1 className="mt-5 font-merriweather text-4xl leading-[1.05] text-[#0f4d5a] sm:text-5xl md:text-[3.25rem]">
-                Stay clean,
-                <br />
-                stay healthy
+                Family-run. Professionally clean.
               </h1>
-              <p className="mt-5 font-roboto text-base leading-relaxed text-slate-700 sm:text-lg">
+              <p className="mt-5 font-lato text-base leading-relaxed text-slate-700 sm:text-lg">
                 We are a family-run domestic cleaning service, serving
                 Warrington and the surrounding areas since 2013.
               </p>
               <div className="mt-7 flex flex-wrap items-center gap-4">
                 <a
                   className="inline-flex items-center justify-center rounded-full bg-[#105360] px-8 py-3 text-sm font-semibold uppercase tracking-wide text-white shadow-sm transition-transform duration-300 hover:scale-105"
-                  href=""
+                  href="/about"
                 >
                   Look at our services
                 </a>

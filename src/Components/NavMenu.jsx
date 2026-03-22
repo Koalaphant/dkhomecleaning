@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { RxCross2 } from "react-icons/rx";
-import { FaFacebookF, FaInstagram, FaXTwitter } from "react-icons/fa6";
+import { FaFacebookF } from "react-icons/fa6";
 
 export default function NavMenu({ navLinks, setMenuOpen }) {
   const [fadeIn, setFadeIn] = useState(false);
@@ -66,20 +66,6 @@ export default function NavMenu({ navLinks, setMenuOpen }) {
               aria-label="Facebook"
             >
               <FaFacebookF />
-            </a>
-            <a
-              href="#"
-              className="flex h-9 w-9 items-center justify-center rounded-full border border-white/30 transition hover:bg-white/10"
-              aria-label="Instagram"
-            >
-              <FaInstagram />
-            </a>
-            <a
-              href="#"
-              className="flex h-9 w-9 items-center justify-center rounded-full border border-white/30 transition hover:bg-white/10"
-              aria-label="X"
-            >
-              <FaXTwitter />
             </a>
           </div>
         </div>
