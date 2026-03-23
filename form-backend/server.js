@@ -8,10 +8,13 @@ import { Resend } from "resend";
 dotenv.config();
 
 const app = express();
-const port = 3001;
+const port = process.env.PORT || 3001;
+const corsOrigins = process.env.CORS_ORIGIN
+  ? process.env.CORS_ORIGIN.split(",").map((origin) => origin.trim())
+  : ["http://localhost:5173", "http://localhost:5174"];
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-app.use(cors({ origin: ["http://localhost:5173", "http://localhost:5174"] }));
+app.use(cors({ origin: corsOrigins }));
 app.use(express.json());
 
 app.post("/form-submission", async (req, res) => {
