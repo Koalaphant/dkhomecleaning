@@ -49,7 +49,7 @@ export default function NavMenu({ navLinks, setMenuOpen }) {
         </ul>
         <div className="mt-8">
           <a
-            href="#"
+            href="/contact"
             className="inline-flex w-full items-center justify-center rounded-full bg-white px-6 py-3 text-sm font-semibold uppercase tracking-wide text-[#105360] transition hover:scale-[1.02]"
           >
             Get a quote
