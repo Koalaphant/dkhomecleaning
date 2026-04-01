@@ -17,6 +17,14 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 app.use(cors({ origin: corsOrigins }));
 app.use(express.json());
 
+app.get("/", (req, res) => {
+  res.status(200).json({ status: "ok" });
+});
+
+app.get("/health", (req, res) => {
+  res.status(200).json({ status: "ok" });
+});
+
 app.post("/form-submission", async (req, res) => {
   try {
     const {
