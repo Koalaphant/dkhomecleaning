@@ -100,6 +100,7 @@ export default function Contact() {
       setConfirmationEmail("");
       setPhoneNumber("");
       setMessage("");
+      setName("");
 
       setSuccess(true);
     } catch {
