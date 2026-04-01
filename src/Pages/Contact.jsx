@@ -73,17 +73,20 @@ export default function Contact() {
     }
 
     try {
-      const response = await fetch("http://localhost:3001/form-submission", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name,
-          email,
-          confirmationEmail,
-          message,
-          phoneNumber,
-        }),
-      });
+      const response = await fetch(
+        "https://api-dkhomecleaning.duckpixel.com/form-submission",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            name,
+            email,
+            confirmationEmail,
+            message,
+            phoneNumber,
+          }),
+        },
+      );
 
       const data = await response.json();
 
