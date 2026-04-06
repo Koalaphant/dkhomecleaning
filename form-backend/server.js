@@ -27,13 +27,7 @@ app.get("/health", (req, res) => {
 
 app.post("/form-submission", async (req, res) => {
   try {
-    const {
-      name,
-      email,
-      confirmationEmail,
-      message,
-      phoneNumber,
-    } = req.body;
+    const { name, email, confirmationEmail, message, phoneNumber } = req.body;
 
     const errors = {};
 
@@ -75,7 +69,12 @@ app.post("/form-submission", async (req, res) => {
 
     const { data, error } = await resend.emails.send({
       from: "DK Home Cleaning <andrew@duckpixel.com>",
-      to: "andrew.wardjones@gmail.com",
+      to: [
+        "andrew.wardjones@gmail.com",
+        "andrew.wardjones@icloud.com",
+        "dave@dkhomecleaning.com",
+        "karen@dkhomecleaning.com",
+      ],
       subject: "Message from DK Home Cleaning Site",
       html,
     });
