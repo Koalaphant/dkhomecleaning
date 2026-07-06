@@ -9,12 +9,68 @@ dotenv.config();
 
 const app = express();
 const port = process.env.PORT || 3001;
-const corsOrigins = process.env.CORS_ORIGIN
+const defaultCorsOrigins = [
+  "http://localhost:5173",
+  "http://localhost:5174",
+  "https://dkhomecleaning.com",
+  "https://www.dkhomecleaning.com",
+];
+const configuredCorsOrigins = process.env.CORS_ORIGIN
   ? process.env.CORS_ORIGIN.split(",").map((origin) => origin.trim())
-  : ["http://localhost:5173", "http://localhost:5174"];
+  : [];
+const corsOrigins = new Set([
+  ...defaultCorsOrigins,
+  ...configuredCorsOrigins,
+]);
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-app.use(cors({ origin: corsOrigins }));
+function isAllowedOrigin(origin) {
+  if (!origin) {
+    return true;
+  }
+
+  if (corsOrigins.has(origin)) {
+    return true;
+  }
+
+  try {
+    const url = new URL(origin);
+    return (
+      ["localhost", "127.0.0.1"].includes(url.hostname) &&
+      ["http:", "https:"].includes(url.protocol)
+    );
+  } catch {
+    return false;
+  }
+}
+
+function normalizePhoneNumber(value = "") {
+  const digits = String(value).replace(/\D/g, "");
+
+  if (digits.startsWith("44") && digits.length === 12) {
+    return `0${digits.slice(2)}`;
+  }
+
+  if (digits.startsWith("7") && digits.length === 10) {
+    return `0${digits}`;
+  }
+
+  return digits;
+}
+
+app.use(
+  cors({
+    origin(origin, callback) {
+      if (isAllowedOrigin(origin)) {
+        callback(null, true);
+        return;
+      }
+
+      console.warn(`Blocked CORS origin: ${origin}`);
+      callback(null, false);
+    },
+  }),
+);
 app.use(express.json());
 
 app.get("/", (req, res) => {
@@ -28,32 +84,36 @@ app.get("/health", (req, res) => {
 app.post("/form-submission", async (req, res) => {
   try {
     const { name, email, confirmationEmail, message, phoneNumber } = req.body;
+    const normalizedPhoneNumber = normalizePhoneNumber(phoneNumber);
 
     const errors = {};
 
-    if (!name) {
+    if (!name?.trim()) {
       errors.name = "Name is required";
-    } else if (name.length < 3) {
+    } else if (name.trim().length < 3) {
       errors.name = "Name must be at least 3 characters";
     }
 
-    if (!email) {
+    if (!email?.trim()) {
       errors.email = "Email is required";
     } else if (!email.includes("@")) {
       errors.email = "Email must include @";
     }
 
-    if (!confirmationEmail || email !== confirmationEmail) {
+    if (
+      !confirmationEmail?.trim() ||
+      email.trim() !== confirmationEmail.trim()
+    ) {
       errors.confirmationEmail = "Email doesn't match";
     }
 
-    if (!message || message.trim().split(" ").length < 3) {
+    if (!message || message.trim().split(/\s+/).length < 3) {
       errors.message = "Message needs more than 3 words.";
     }
 
-    const phoneRegex = /^07\d{9}$/;
-    if (!phoneRegex.test(phoneNumber)) {
-      errors.phoneNumber = "Phone number must start with 07 and be 11 digits";
+    const phoneRegex = /^0[1237]\d{9}$/;
+    if (!phoneRegex.test(normalizedPhoneNumber)) {
+      errors.phoneNumber = "Enter a valid UK phone number";
     }
 
     if (Object.keys(errors).length > 0) {
@@ -61,9 +121,9 @@ app.post("/form-submission", async (req, res) => {
     }
 
     const html = EmailTemplate({
-      name,
-      email,
-      phoneNumber,
+      name: name.trim(),
+      email: email.trim(),
+      phoneNumber: normalizedPhoneNumber,
       message,
     });
 
@@ -81,6 +141,11 @@ app.post("/form-submission", async (req, res) => {
 
     if (error) {
       console.error("Resend failed to send contact email", error);
+      return res.status(502).json({
+        errors: {
+          server: "Email failed to send",
+        },
+      });
     }
 
     console.log("Sent!");

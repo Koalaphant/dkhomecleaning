@@ -1,5 +1,23 @@
 import { useState } from "react";
 
+const formSubmissionUrl =
+  import.meta.env.VITE_FORM_SUBMISSION_URL ||
+  "https://api-dkhomecleaning.duckpixel.com/form-submission";
+
+function normalizePhoneNumber(value = "") {
+  const digits = String(value).replace(/\D/g, "");
+
+  if (digits.startsWith("44") && digits.length === 12) {
+    return `0${digits.slice(2)}`;
+  }
+
+  if (digits.startsWith("7") && digits.length === 10) {
+    return `0${digits}`;
+  }
+
+  return digits;
+}
+
 export default function Contact() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -33,28 +51,32 @@ export default function Contact() {
 
   function validate() {
     const errorObj = {};
+    const normalizedPhoneNumber = normalizePhoneNumber(phoneNumber);
 
-    if (!name) {
+    if (!name.trim()) {
       errorObj.name = "Name is required";
-    } else if (name.length < 3) {
-      errorObj.name = "Name must be at least 3 charachters";
+    } else if (name.trim().length < 3) {
+      errorObj.name = "Name must be at least 3 characters";
     }
-    if (!email) {
+    if (!email.trim()) {
       errorObj.email = "Email is required";
     } else if (!email.includes("@")) {
       errorObj.email = "Email must include @";
     }
-    if (!confirmationEmail || email !== confirmationEmail) {
+    if (
+      !confirmationEmail.trim() ||
+      email.trim() !== confirmationEmail.trim()
+    ) {
       errorObj.confirmationEmail = "Email doesn't match";
     }
 
-    if (!message || message.trim().split(" ").length < 3) {
+    if (!message || message.trim().split(/\s+/).length < 3) {
       errorObj.message = "Message needs more than 3 words.";
     }
 
-    const phoneRegex = /^07\d{9}$/;
-    if (!phoneRegex.test(phoneNumber)) {
-      errorObj.phoneNumber = "Phone number must start with 07 and be 11 digits";
+    const phoneRegex = /^0[1237]\d{9}$/;
+    if (!phoneRegex.test(normalizedPhoneNumber)) {
+      errorObj.phoneNumber = "Enter a valid UK phone number";
     }
 
     return errorObj;
@@ -73,20 +95,17 @@ export default function Contact() {
     }
 
     try {
-      const response = await fetch(
-        "https://api-dkhomecleaning.duckpixel.com/form-submission",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            name,
-            email,
-            confirmationEmail,
-            message,
-            phoneNumber,
-          }),
-        },
-      );
+      const response = await fetch(formSubmissionUrl, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: name.trim(),
+          email: email.trim(),
+          confirmationEmail: confirmationEmail.trim(),
+          message,
+          phoneNumber: normalizePhoneNumber(phoneNumber),
+        }),
+      });
 
       const data = await response.json();
 
@@ -132,6 +151,11 @@ export default function Contact() {
         <div className="mx-auto grid max-w-5xl gap-8 md:grid-cols-[1.1fr_0.9fr]">
           <form className="rounded-3xl border border-[#d9e4e7] bg-white p-8 shadow-[0_30px_80px_-55px_rgba(15,77,90,0.6)] md:p-10">
             <div className="grid gap-6">
+              {(errors.general || errors.server) && (
+                <p className="rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
+                  {errors.general || errors.server}
+                </p>
+              )}
               <div>
                 <label className="text-xs font-semibold uppercase tracking-[0.2em] text-[#105361]">
                   Full Name
